@@ -1,5 +1,6 @@
 
 import { Target, Compass, Sun, ShieldCheck } from 'lucide-react';
+import Founders from './Founders';
 
 export default function About() {
   const features = [
@@ -94,6 +95,8 @@ export default function About() {
 
         </div>
       </div>
+
+      <Founders />
     </section>
   );
 }

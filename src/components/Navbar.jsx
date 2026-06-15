@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Menu, X, Phone, Mail } from 'lucide-react';
 import logo from '../assets/S.Vastu-logo.webp';
 
@@ -26,8 +27,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20 sm:h-24">
           {/* Logo */}
-          <div className="flex-shrink-0 flex items-center cursor-pointer group">
-            {/* Using the logo you uploaded, make sure to save it as logo.png in the public folder */}
+          <Link to="/" className="flex-shrink-0 flex items-center cursor-pointer group">
             <img 
               src={logo} 
               alt="S Vastu Solution Logo" 
@@ -37,17 +37,20 @@ export default function Navbar() {
                 e.target.nextSibling.style.display = 'block';
               }}
             />
-            {/* Fallback if image is missing */}
             <div className="hidden text-2xl font-bold text-[#B8860B]">S VASTU</div>
-          </div>
+          </Link>
 
           {/* Desktop Menu */}
           <nav className="hidden md:flex space-x-8 lg:space-x-10 items-center">
             {['Home', 'About', 'Services', 'Gallery', 'Blog', 'Contact'].map((item) => (
-              <a key={item} href={`#${item.toLowerCase()}`} className="text-gray-700 hover:text-[#B8860B] font-semibold text-base transition-colors duration-300 relative group">
+              <Link 
+                key={item} 
+                to={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
+                className="text-gray-700 hover:text-[#B8860B] font-semibold text-base transition-colors duration-300 relative group"
+              >
                 {item}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#B8860B] transition-all duration-300 group-hover:w-full"></span>
-              </a>
+              </Link>
             ))}
             <button className="bg-gradient-to-r from-[#B8860B] to-[#D4AF37] text-white px-7 py-2.5 rounded-full font-bold hover:shadow-lg hover:shadow-[#B8860B]/30 transition-all duration-300 transform hover:-translate-y-0.5">
               Book Now
@@ -72,15 +75,15 @@ export default function Navbar() {
           <p className="text-xs text-gray-500 mb-4 pb-3 border-b text-center px-4">
             Welcome to S Vastu Solution – Trusted Vastu Consultant in Chandigarh & Zirakpur, Panchkula
           </p>
-          {['Home', 'About Us', 'Services', 'Gallery', 'Blog', 'Contact'].map((item) => (
-            <a
+          {['Home', 'About', 'Services', 'Gallery', 'Blog', 'Contact'].map((item) => (
+            <Link
               key={item}
-              href={`#${item.toLowerCase().replace(' ', '-')}`}
+              to={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
               className="block px-4 py-3 rounded-lg text-base font-semibold text-gray-800 hover:text-[#B8860B] hover:bg-orange-50 transition-colors"
               onClick={() => setIsOpen(false)}
             >
               {item}
-            </a>
+            </Link>
           ))}
           <div className="pt-4 px-2">
             <button className="w-full bg-gradient-to-r from-[#B8860B] to-[#D4AF37] text-white px-6 py-3.5 rounded-xl font-bold hover:shadow-lg transition-all shadow-md">
