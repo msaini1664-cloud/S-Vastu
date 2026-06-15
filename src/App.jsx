@@ -5,6 +5,7 @@ import About from './components/About';
 import Services from './components/Services';
 import Process from './components/Process';
 import Gallery from './components/Gallery';
+import InstagramFeed from './components/InstagramFeed';
 import Testimonials from './components/Testimonials';
 import Blog from './components/Blog';
 import Contact from './components/Contact';
@@ -18,6 +19,7 @@ function Home() {
       <Services />
       <Process />
       <Gallery />
+      <InstagramFeed />
       <Testimonials />
       <Blog />
       <Contact />
