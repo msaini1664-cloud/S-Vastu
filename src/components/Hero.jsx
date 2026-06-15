@@ -1,90 +1,177 @@
-
+import { motion } from 'framer-motion';
+import heroVideo from '../assets/A_cinematic_slow_panning_K_v.mp4';
+import { Globe, Droplets, Flame, Wind, Sparkles } from 'lucide-react';
 
 export default function Hero() {
+  const elements = [
+    {
+      icon: (
+        <motion.div animate={{ rotate: 360 }} transition={{ duration: 8, repeat: Infinity, ease: "linear" }}>
+          <Globe className="w-8 h-8 sm:w-10 sm:h-10 text-[#DCC197]" strokeWidth={1.5} />
+        </motion.div>
+      ),
+      title: "Earth (Prithvi)",
+      desc: "The foundation of stability and strength in your environment."
+    },
+    {
+      icon: (
+        <motion.div animate={{ y: [0, -5, 0] }} transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}>
+          <Droplets className="w-8 h-8 sm:w-10 sm:h-10 text-[#DCC197]" strokeWidth={1.5} />
+        </motion.div>
+      ),
+      title: "Water (Jal)",
+      desc: "Represents fluidity, emotions, and the flow of prosperity."
+    },
+    {
+      icon: (
+        <motion.div animate={{ scale: [1, 1.15, 1], rotate: [-3, 3, -3] }} transition={{ duration: 0.6, repeat: Infinity, ease: "easeInOut" }}>
+          <Flame className="w-8 h-8 sm:w-10 sm:h-10 text-[#DCC197]" strokeWidth={1.5} />
+        </motion.div>
+      ),
+      title: "Fire (Agni)",
+      desc: "The energy of transformation, passion, and illumination."
+    },
+    {
+      icon: (
+        <motion.div animate={{ x: [-3, 3, -3], opacity: [0.7, 1, 0.7] }} transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}>
+          <Wind className="w-8 h-8 sm:w-10 sm:h-10 text-[#DCC197]" strokeWidth={1.5} />
+        </motion.div>
+      ),
+      title: "Air (Vayu)",
+      desc: "The breath of life, movement, and communication."
+    },
+    {
+      icon: (
+        <motion.div animate={{ rotate: [0, 180, 360], scale: [0.9, 1.1, 0.9] }} transition={{ duration: 4, repeat: Infinity, ease: "linear" }}>
+          <Sparkles className="w-8 h-8 sm:w-10 sm:h-10 text-[#DCC197]" strokeWidth={1.5} />
+        </motion.div>
+      ),
+      title: "Space (Akasha)",
+      desc: "The container of all elements, representing expansion and connection."
+    }
+  ];
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2, delayChildren: 0.1 }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+  };
+
   return (
-    <div className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 min-h-[95vh] flex items-center justify-center overflow-hidden">
+    <div className="relative min-h-[85vh] flex items-center justify-center pt-28 pb-60 sm:pb-56 lg:pb-48 overflow-hidden">
       
-      {/* Full Background Image */}
+      {/* Background Video */}
       <div className="absolute inset-0 z-0">
-         <img 
-           src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2000&auto=format&fit=crop" 
-           alt="Vastu interior" 
-           className="w-full h-full object-cover transform scale-105"
-         />
-         {/* Deep Overlay for contrast */}
-         <div className="absolute inset-0 bg-gradient-to-b from-[#0A192F]/90 via-[#0A192F]/80 to-[#0A192F]/95"></div>
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="metadata"
+          className="w-full h-full object-cover"
+          src={heroVideo}
+        />
+        {/* Simple dark overlay to make text readable */}
+        <div className="absolute inset-0 bg-black/60"></div>
       </div>
 
-      {/* Decorative Gold Elements */}
-      <div className="absolute top-0 left-0 w-full h-full z-0 pointer-events-none overflow-hidden">
-        <div className="absolute -top-24 -left-24 w-96 h-96 border-[1px] border-[#D4AF37]/20 rounded-full"></div>
-        <div className="absolute -top-12 -left-12 w-96 h-96 border-[1px] border-[#D4AF37]/10 rounded-full"></div>
-        <div className="absolute bottom-10 -right-24 w-[500px] h-[500px] border-[1px] border-[#D4AF37]/10 rounded-full"></div>
-      </div>
+      {/* Main Content */}
+      <motion.div 
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="relative z-10 text-center px-4 max-w-5xl mx-auto flex flex-col items-center justify-center -mt-8 lg:-mt-16"
+      >
+        <motion.p 
+          variants={itemVariants}
+          className="text-[#DCC197] font-medium text-xs sm:text-sm md:text-base mb-6 drop-shadow-md uppercase tracking-[0.3em]"
+        >
+          Trusted Vastu Consultant in Chandigarh & Zirakpur, Panchkula
+        </motion.p>
 
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full text-center">
-        
-        {/* Top Badge (Left Aligned) */}
-        <div className="flex justify-start w-full">
-          <div className="inline-flex items-center gap-2 px-6 py-2 rounded-full border border-[#D4AF37]/30 bg-white/5 backdrop-blur-md mb-8 animate-fade-in-up">
-            <span className="w-2 h-2 rounded-full bg-[#D4AF37] animate-pulse"></span>
-            <span className="text-[#D4AF37] font-semibold text-sm tracking-[0.25em] uppercase">
-              S Vastu Solution
-            </span>
-            <span className="w-2 h-2 rounded-full bg-[#D4AF37] animate-pulse"></span>
-          </div>
+        <motion.h1 
+          variants={itemVariants}
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-white mb-6 sm:mb-8 leading-tight drop-shadow-2xl"
+        >
+          Welcome to <br className="block sm:hidden" /> 
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#DCC197] to-[#FCEABB] italic font-semibold">S Vastu Solution</span>
+        </motion.h1>
+
+        <motion.p 
+          variants={itemVariants}
+          className="text-white/80 text-sm sm:text-base md:text-lg lg:text-xl max-w-2xl mx-auto mb-8 sm:mb-12 font-light drop-shadow-md tracking-wide leading-relaxed px-2"
+        >
+          Align your space with natural forces to attract peace, prosperity, and positive vibrations.
+        </motion.p>
+
+        <motion.button
+          variants={itemVariants}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          className="bg-[#DCC197] text-[#1E242C] font-semibold text-xs sm:text-sm tracking-[0.25em] uppercase px-8 py-4 sm:px-12 sm:py-5 hover:bg-white hover:-translate-y-1 transition-all duration-300 shadow-[0_10px_30px_rgba(220,193,151,0.3)] rounded-sm"
+        >
+          Discover More
+        </motion.button>
+      </motion.div>
+
+      {/* Bottom 5 Elements Flip Cards */}
+      <motion.div 
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 0.8, ease: "easeOut" }}
+        className="absolute bottom-4 sm:bottom-8 left-0 w-full z-20 px-4"
+      >
+        <div className="max-w-[95rem] mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
+          {elements.map((item, i) => (
+            <div 
+              key={i} 
+              className={`group h-48 sm:h-56 [perspective:1000px] cursor-pointer ${
+                i === 4 ? 'col-span-2 sm:col-span-1 w-1/2 sm:w-full mx-auto' : ''
+              }`}
+            >
+              <div className="relative w-full h-full transition-all duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+                
+                {/* Front Side (Glassmorphism) */}
+                <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] flex flex-col items-center justify-center bg-black/40 backdrop-blur-md border border-white/10 rounded-2xl p-4 sm:p-6 shadow-xl">
+                  <div className="w-16 h-16 rounded-full border border-dashed border-gray-400 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-500">
+                    <div className="transform scale-90">
+                      {item.icon}
+                    </div>
+                  </div>
+                  <h3 className="text-white font-bold text-[11px] sm:text-xs md:text-sm uppercase tracking-[0.15em] text-center mb-3">
+                    {item.title}
+                  </h3>
+                  <div className="w-6 h-px bg-[#DCC197] mb-3"></div>
+                  <p className="text-[#DCC197] text-[8px] sm:text-[9px] tracking-[0.2em] uppercase opacity-80">
+                    Hover for Info
+                  </p>
+                </div>
+
+                {/* Back Side */}
+                <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] flex flex-col items-center justify-center bg-[#1E242C]/95 backdrop-blur-lg border border-[#DCC197]/30 rounded-2xl p-4 sm:p-6 text-center shadow-[0_0_30px_rgba(220,193,151,0.15)]">
+                  <div className="transform scale-75 mb-2 opacity-80">
+                    {item.icon}
+                  </div>
+                  <h3 className="text-[#DCC197] font-bold text-[11px] sm:text-xs md:text-sm uppercase tracking-[0.15em] mb-3">
+                    {item.title}
+                  </h3>
+                  <p className="text-gray-300 text-[10px] sm:text-[11px] md:text-xs leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
+
+              </div>
+            </div>
+          ))}
         </div>
-        
-        {/* Main Headline */}
-        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold text-white leading-tight tracking-tight mb-8">
-          Harmonize Your <br/>
-          <span className="font-serif italic tracking-normal text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] via-[#FCEABB] to-[#D4AF37]">
-            Space & Spirit
-          </span>
-        </h1>
-        
-        {/* Paragraph */}
-        <p className="text-lg sm:text-xl md:text-2xl text-gray-300 leading-relaxed max-w-3xl mx-auto font-light mb-12">
-          Unlock the true potential of your home and workspace. 
-          Through the ancient wisdom of <strong className="text-white font-semibold">Vastu Shastra</strong>, we align your surroundings with natural forces to attract peace, prosperity, and positive energy.
-        </p>
-        
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-          <button className="w-full sm:w-auto px-10 py-4 lg:py-5 bg-gradient-to-r from-[#D4AF37] to-[#B8860B] text-white rounded-full font-bold text-lg hover:shadow-[0_0_30px_rgba(212,175,55,0.4)] transition-all duration-300 transform hover:-translate-y-1">
-            Book Consultation
-          </button>
-          <button className="group w-full sm:w-auto px-10 py-4 lg:py-5 bg-transparent text-white border border-white/30 rounded-full font-bold text-lg transition-all duration-300 hover:bg-white hover:text-[#0A192F] flex items-center justify-center gap-2">
-            Explore Services
-            <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-          </button>
-        </div>
-
-      </div>
-
-      {/* Stats Bar at the Bottom */}
-      <div className="absolute bottom-0 left-0 w-full bg-white/5 backdrop-blur-lg border-t border-white/10 z-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/10 py-6">
-            <div className="text-center px-4">
-              <p className="text-3xl font-bold text-[#D4AF37] mb-1">500+</p>
-              <p className="text-xs text-gray-400 uppercase tracking-widest">Spaces Harmonized</p>
-            </div>
-            <div className="text-center px-4">
-              <p className="text-3xl font-bold text-[#D4AF37] mb-1">100%</p>
-              <p className="text-xs text-gray-400 uppercase tracking-widest">Positive Energy</p>
-            </div>
-            <div className="text-center px-4 hidden md:block">
-              <p className="text-3xl font-bold text-[#D4AF37] mb-1">15+</p>
-              <p className="text-xs text-gray-400 uppercase tracking-widest">Years Experience</p>
-            </div>
-            <div className="text-center px-4 hidden md:block">
-              <p className="text-3xl font-bold text-[#D4AF37] mb-1">24/7</p>
-              <p className="text-xs text-gray-400 uppercase tracking-widest">Support</p>
-            </div>
-          </div>
-        </div>
-      </div>
+      </motion.div>
       
     </div>
   );
