@@ -21,11 +21,14 @@ const InstagramIcon = ({ className }) => (
 
 export default function InstagramFeed() {
   useEffect(() => {
-    // Dynamically load the Elfsight platform script
-    const script = document.createElement('script');
-    script.src = 'https://elfsightcdn.com/platform.js';
-    script.async = true;
-    document.body.appendChild(script);
+    // Dynamically load the Elfsight platform script only once
+    let script = document.querySelector('script[src="https://elfsightcdn.com/platform.js"]');
+    if (!script) {
+      script = document.createElement('script');
+      script.src = 'https://elfsightcdn.com/platform.js';
+      script.async = true;
+      document.body.appendChild(script);
+    }
 
     // Safely remove watermark and duplicate titles using text matching
     const interval = setInterval(() => {
@@ -38,20 +41,19 @@ export default function InstagramFeed() {
       });
       
       // Hide Duplicate "Follow us on Instagram" text from Elfsight
-      const elements = document.querySelectorAll('div, a, span, h1, h2, h3');
-      elements.forEach(el => {
-        if (el.textContent.trim() === 'Follow us on Instagram' && !el.closest('.max-w-3xl')) {
-          el.style.display = 'none';
-        }
-      });
+      const elfsightContainer = document.querySelector('.elfsight-app-7b460780-ff7a-4bdc-ab7d-331a4ed961a6');
+      if (elfsightContainer) {
+        const elements = elfsightContainer.querySelectorAll('div, a, span, h1, h2, h3');
+        elements.forEach(el => {
+          if (el.textContent.trim() === 'Follow us on Instagram') {
+            el.style.display = 'none';
+          }
+        });
+      }
     }, 500);
 
     return () => {
       clearInterval(interval);
-      // Cleanup script when component unmounts
-      if (document.body.contains(script)) {
-        document.body.removeChild(script);
-      }
     };
   }, []);
 
@@ -60,15 +62,14 @@ export default function InstagramFeed() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header Section */}
-        <div className="text-center max-w-3xl mx-auto mb-8">
+        <div className="flex flex-col items-center justify-center mb-12">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="flex items-center justify-center gap-2 mb-2"
+            className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-[#f09433] via-[#e6683c] to-[#bc1888] flex items-center justify-center mb-6 shadow-lg shadow-pink-500/30"
           >
-            <InstagramIcon className="w-6 h-6 sm:w-8 sm:h-8 text-[#E1306C]" />
-            <span className="text-[#B8860B] font-serif italic tracking-wider text-xl sm:text-2xl">Follow Us</span>
+            <InstagramIcon className="w-8 h-8 text-white" />
           </motion.div>
           
           <motion.h2 
@@ -76,18 +77,10 @@ export default function InstagramFeed() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-4xl sm:text-5xl font-extrabold mb-4 tracking-tight text-gray-900 text-center"
+            className="text-3xl sm:text-4xl font-bold text-gray-900 tracking-tight text-center"
           >
-            On Instagram
+            Follow us on Instagram
           </motion.h2>
-          
-          <motion.div 
-            initial={{ opacity: 0, scale: 0 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="w-24 sm:w-32 h-1 bg-[#D4AF37] mx-auto rounded-full shadow-sm"
-          />
         </div>
 
         {/* Elfsight Widget Container */}
