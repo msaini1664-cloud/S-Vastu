@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { CheckSquare } from 'lucide-react';
 import consultationImg from '../assets/consultation.png';
+import Founders from './Founders';
 
 export default function About() {
   const points = [
@@ -65,6 +66,7 @@ export default function About() {
 
         </div>
       </div>
+      <Founders />
     </section>
   );
 }

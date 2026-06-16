@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Menu, X, Phone, Mail } from 'lucide-react';
 import logo from '../assets/S.Vastu-logo.webp';
 
@@ -6,9 +7,9 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <>
-      {/* Top Bar - Info (Sticky on PC) */}
-      <div className="bg-[#B8860B] text-white py-2 px-4 sm:px-8 flex-col md:flex-row justify-between items-center hidden md:flex sticky top-0 z-[60] shadow-md">
+    <header className="w-full font-sans shadow-sm fixed top-0 z-50 bg-white border-b border-gray-100">
+      {/* Top Bar - Info */}
+      <div className="bg-[#B8860B] text-white py-2 px-4 sm:px-8 flex-col md:flex-row justify-between items-center hidden md:flex">
         <p className="text-sm font-medium tracking-wide">
           Welcome to S Vastu Solution – Trusted Vastu Consultant in Chandigarh & Zirakpur, Panchkula
         </p>
