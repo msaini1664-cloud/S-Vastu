@@ -2,15 +2,15 @@ import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 const InstagramIcon = ({ className }) => (
-  <svg 
-    xmlns="http://www.w3.org/2000/svg" 
-    width="24" height="24" 
-    viewBox="0 0 24 24" 
-    fill="none" 
-    stroke="currentColor" 
-    strokeWidth="2" 
-    strokeLinecap="round" 
-    strokeLinejoin="round" 
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24" height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
     className={className}
   >
     <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
@@ -39,7 +39,7 @@ export default function InstagramFeed() {
           link.style.display = 'none';
         }
       });
-      
+
       // Hide Duplicate "Follow us on Instagram" text from Elfsight
       const elfsightContainer = document.querySelector('.elfsight-app-7b460780-ff7a-4bdc-ab7d-331a4ed961a6');
       if (elfsightContainer) {
@@ -60,7 +60,7 @@ export default function InstagramFeed() {
   return (
     <section id="instagram-feed" className="py-24 bg-gray-50 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Header Section */}
         <div className="flex flex-col items-center justify-center mb-12">
           <motion.div
@@ -71,8 +71,8 @@ export default function InstagramFeed() {
           >
             <InstagramIcon className="w-8 h-8 text-white" />
           </motion.div>
-          
-          <motion.h2 
+
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}

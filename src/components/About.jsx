@@ -13,9 +13,9 @@ export default function About() {
     <section id="about" className="py-20 lg:py-32 bg-[#F5F2EB] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
-          
+
           {/* Left Side: Image */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -23,16 +23,16 @@ export default function About() {
             className="w-full lg:w-1/2"
           >
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-              <img 
-                src={consultationImg} 
-                alt="Vastu Consultation Session" 
+              <img
+                src={consultationImg}
+                alt="Vastu Consultation Session"
                 className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700"
               />
             </div>
           </motion.div>
 
           {/* Right Side: Content */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -42,7 +42,7 @@ export default function About() {
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-gray-900 leading-[1.1]">
               Harmonize Your Home, Transform Your Life
             </h2>
-            
+
             <p className="text-gray-800 text-lg sm:text-xl leading-relaxed">
               <span className="font-semibold">VAASTU SOLUTIONS:</span> Ancient Wisdom for Modern Living. Expert consulting for positive energy, health, wealth, and peace.
             </p>
