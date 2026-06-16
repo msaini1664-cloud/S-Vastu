@@ -65,7 +65,7 @@ export default function Hero() {
   };
 
   return (
-    <div className="relative min-h-[85vh] flex items-center justify-center pt-28 pb-60 sm:pb-56 lg:pb-48 overflow-hidden">
+    <div className="relative min-h-screen flex flex-col justify-between pt-24 sm:pt-28 overflow-hidden gap-8">
       
       {/* Background Video */}
       <div className="absolute inset-0 z-0">
@@ -87,7 +87,7 @@ export default function Hero() {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="relative z-10 text-center px-4 max-w-5xl mx-auto flex flex-col items-center justify-center -mt-8 lg:-mt-16"
+        className="relative z-10 text-center px-4 max-w-5xl mx-auto flex-grow flex flex-col items-center justify-center py-10 flex-shrink-0"
       >
         <motion.p 
           variants={itemVariants}
@@ -126,7 +126,7 @@ export default function Hero() {
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 0.8, ease: "easeOut" }}
-        className="absolute bottom-4 sm:bottom-8 left-0 w-full z-20 px-4"
+        className="relative z-20 w-full px-4 pb-8 sm:pb-12 mt-auto flex-shrink-0"
       >
         <div className="max-w-[95rem] mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
           {elements.map((item, i) => (

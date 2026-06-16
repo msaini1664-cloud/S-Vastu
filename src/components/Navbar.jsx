@@ -11,7 +11,7 @@ export default function Navbar() {
       {/* Top Bar - Info */}
       <div className="bg-[#B8860B] text-white py-2 px-4 sm:px-8 flex-col md:flex-row justify-between items-center hidden md:flex">
         <p className="text-sm font-medium tracking-wide">
-          Welcome to S Vastu Solution – Trusted Vastu Consultant in Chandigarh & Zirakpur, Panchkula
+          Welcome to S-Vastu Solution – Trusted Vastu Consultant in Chandigarh & Zirakpur, Panchkula
         </p>
         <div className="flex gap-6 mt-2 md:mt-0 text-sm font-medium">
           <a href="tel:+910000000000" className="flex items-center gap-1.5 hover:text-yellow-200 transition-colors">
