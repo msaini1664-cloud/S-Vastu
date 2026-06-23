@@ -1,4 +1,5 @@
 import { Phone, Mail, MapPin } from 'lucide-react';
+import { FaFacebookF, FaYoutube, FaInstagram, FaPinterestP } from 'react-icons/fa';
 import logo from '../assets/S.Vastu-logo.webp';
 
 export default function Footer() {
@@ -15,10 +16,18 @@ export default function Footer() {
             <div className="flex flex-col items-center">
               <p className="text-white font-medium mb-3">Follow Us On :</p>
               <div className="flex gap-4 text-[#D4AF37]">
-                <a href="#" className="hover:text-white transition-colors"><span className="sr-only">Facebook</span>f</a>
-                <a href="#" className="hover:text-white transition-colors"><span className="sr-only">YouTube</span>▶</a>
-                <a href="#" className="hover:text-white transition-colors"><span className="sr-only">Instagram</span>📷</a>
-                <a href="#" className="hover:text-white transition-colors"><span className="sr-only">Pinterest</span>P</a>
+                <a href="#" className="hover:text-white transition-colors" aria-label="Facebook">
+                  <FaFacebookF className="w-[18px] h-[18px]" />
+                </a>
+                <a href="#" className="hover:text-white transition-colors" aria-label="YouTube">
+                  <FaYoutube className="w-5 h-5" />
+                </a>
+                <a href="#" className="hover:text-white transition-colors" aria-label="Instagram">
+                  <FaInstagram className="w-5 h-5" />
+                </a>
+                <a href="#" className="hover:text-white transition-colors" aria-label="Pinterest">
+                  <FaPinterestP className="w-[18px] h-[18px]" />
+                </a>
               </div>
             </div>
           </div>
