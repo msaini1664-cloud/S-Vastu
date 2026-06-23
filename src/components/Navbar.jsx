@@ -42,7 +42,7 @@ export default function Navbar() {
 
           {/* Desktop Menu */}
           <nav className="hidden md:flex space-x-8 lg:space-x-10 items-center">
-            {['Home', 'About', 'Services', 'Gallery', 'Blog', 'Contact'].map((item) => (
+            {['Home', 'About', 'Services', 'Gallery', 'Blog', 'Products', 'Contact'].map((item) => (
               <Link 
                 key={item} 
                 to={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
@@ -75,7 +75,7 @@ export default function Navbar() {
           <p className="text-xs text-gray-500 mb-4 pb-3 border-b text-center px-4">
             Welcome to S Vastu Solution – Trusted Vastu Consultant in Chandigarh & Zirakpur, Panchkula
           </p>
-          {['Home', 'About', 'Services', 'Gallery', 'Blog', 'Contact'].map((item) => (
+          {['Home', 'About', 'Services', 'Gallery', 'Blog', 'Products', 'Contact'].map((item) => (
             <Link
               key={item}
               to={item === 'Home' ? '/' : `/${item.toLowerCase()}`}

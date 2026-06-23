@@ -9,6 +9,7 @@ import InstagramFeed from './components/InstagramFeed';
 import Testimonials from './components/Testimonials';
 import Blog from './components/Blog';
 import Contact from './components/Contact';
+import Products from './components/Products';
 import Footer from './components/Footer';
 
 function Home() {
@@ -21,6 +22,7 @@ function Home() {
       <Gallery />
       <InstagramFeed />
       <Testimonials />
+      <Products />
       <Blog />
       <Contact />
     </>
@@ -39,6 +41,7 @@ function App() {
             <Route path="/services" element={<Services />} />
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/products" element={<Products />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>

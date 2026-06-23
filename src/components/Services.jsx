@@ -1,7 +1,6 @@
 
-import { Home, Building2, Factory, Hash, Monitor, Star, Map, Shield } from 'lucide-react';
+import { Home, Building2, Factory, Hash, Monitor, Map } from 'lucide-react';
 import numerologyImg from '../assets/numerology.jpeg';
-import yantraImg from '../assets/REMDIES.jpeg';
 
 export default function Services() {
   const services = [
@@ -37,22 +36,10 @@ export default function Services() {
       image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=800&auto=format&fit=crop"
     },
     {
-      icon: <Star className="w-10 h-10 text-white" />,
-      title: "Astro-Vastu",
-      description: "A powerful combination of Vedic Astrology and Vastu Shastra to provide highly personalized remedies based on your unique birth horoscope.",
-      image: "https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=800&auto=format&fit=crop"
-    },
-    {
       icon: <Map className="w-10 h-10 text-white" />,
       title: "Vastu for Land/Plots",
       description: "Ensure the land you buy is highly auspicious. We check the soil, shape, slopes, and energy fields before you invest in your dream project.",
       image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=800&auto=format&fit=crop"
-    },
-    {
-      icon: <Shield className="w-10 h-10 text-white" />,
-      title: "Remedies & Yantras",
-      description: "Powerful, energized Vastu products like yantras, crystals, and pyramids specifically designed to fix defects without any structural demolition.",
-      image: yantraImg
     }
   ];
 
@@ -73,11 +60,11 @@ export default function Services() {
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <div key={index} className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 border border-gray-100 flex flex-col h-full">
               {/* Image Header */}
-              <div className="relative h-48 overflow-hidden">
+              <div className="relative h-40 overflow-hidden">
                 <img 
                   src={service.image} 
                   alt={service.title} 
@@ -88,7 +75,7 @@ export default function Services() {
               </div>
               
               {/* Content */}
-              <div className="p-8 pt-10 flex-1 flex flex-col">
+              <div className="p-6 pt-6 flex-1 flex flex-col">
                 <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#B8860B] transition-colors">
                   {service.title}
                 </h3>

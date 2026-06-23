@@ -65,7 +65,7 @@ export default function Hero() {
   };
 
   return (
-    <div className="relative min-h-[85vh] flex items-center justify-center pt-28 pb-60 sm:pb-56 lg:pb-48 overflow-hidden">
+    <div className="relative min-h-[85vh] flex flex-col pt-32 pb-8 sm:pb-12 overflow-hidden">
       
       {/* Background Video */}
       <div className="absolute inset-0 z-0">
@@ -87,13 +87,13 @@ export default function Hero() {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="relative z-10 text-center px-4 max-w-5xl mx-auto flex flex-col items-center justify-center -mt-8 lg:-mt-16"
+        className="relative z-10 text-center px-4 max-w-5xl mx-auto flex flex-col items-center justify-center flex-1 w-full mb-12 sm:mb-16"
       >
         <motion.p 
           variants={itemVariants}
-          className="text-[#DCC197] font-medium text-xs sm:text-sm md:text-base mb-6 drop-shadow-md uppercase tracking-[0.3em]"
+          className="text-[#DCC197] font-medium text-xs sm:text-sm md:text-base mt-4 mb-2 sm:mb-3 drop-shadow-md uppercase tracking-[0.15em] sm:tracking-[0.2em]"
         >
-          Trusted Vastu Consultant in Chandigarh & Zirakpur, Panchkula
+          Trusted Vastu Consultant in Chandigarh, Panchkula & Zirakpur
         </motion.p>
 
         <motion.h1 
@@ -126,15 +126,13 @@ export default function Hero() {
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 0.8, ease: "easeOut" }}
-        className="absolute bottom-4 sm:bottom-8 left-0 w-full z-20 px-4"
+        className="relative w-full z-20 px-4 mt-auto"
       >
-        <div className="max-w-[95rem] mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
+        <div className="max-w-7xl mx-auto flex flex-wrap justify-center gap-4 sm:gap-6">
           {elements.map((item, i) => (
             <div 
               key={i} 
-              className={`group h-48 sm:h-56 [perspective:1000px] cursor-pointer ${
-                i === 4 ? 'col-span-2 sm:col-span-1 w-1/2 sm:w-full mx-auto' : ''
-              }`}
+              className="group h-48 sm:h-56 w-[calc(50%-0.5rem)] sm:w-[calc(33.333%-1rem)] lg:w-[calc(20%-1.2rem)] max-w-[260px] [perspective:1000px] cursor-pointer"
             >
               <div className="relative w-full h-full transition-all duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
                 
