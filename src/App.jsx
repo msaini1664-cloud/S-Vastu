@@ -12,6 +12,10 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import AirflowVastuChakra from './components/AirflowVastuChakra';
 import AboutPage from './Pages/AboutPage';
+import ServicesPage from './Pages/ServicesPage';
+import GalleryPage from './Pages/GalleryPage';
+import BlogPage from './Pages/BlogPage';
+import ContactPage from './Pages/ContactPage';
 
 function Home() {
   return (
@@ -39,6 +43,10 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<AboutPage />} />
+            <Route path="/services" element={<ServicesPage />} />
+            <Route path="/gallery" element={<GalleryPage />} />
+            <Route path="/blog" element={<BlogPage />} />
+            <Route path="/contact" element={<ContactPage />} />
             <Route path="*" element={<Home />} />
           </Routes>
         </main>
