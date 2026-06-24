@@ -63,13 +63,19 @@ export default function Footer() {
           <div>
             <h4 className="text-lg font-semibold text-white mb-6 uppercase tracking-wide">Quick Links</h4>
             <ul className="space-y-4">
-              {['Home', 'About Us', 'Services', 'Blog'].map((link) => (
+              {['Home', 'About Us', 'Services', 'Blog'].map((link) => {
+                let linkPath = link.toLowerCase().replace(' ', '-');
+                if (link === 'Home') linkPath = '';
+                if (link === 'About Us') linkPath = 'about';
+                
+                return (
                 <li key={link}>
-                  <a href={`/${link === 'Home' ? '' : link.toLowerCase().replace(' ', '-')}`} className="text-gray-300 hover:text-[#D4AF37] transition-colors flex items-center gap-2 text-sm">
+                  <a href={`/${linkPath}`} className="text-gray-300 hover:text-[#D4AF37] transition-colors flex items-center gap-2 text-sm">
                     <span className="text-[#D4AF37] font-bold">›</span> {link}
                   </a>
                 </li>
-              ))}
+                );
+              })}
             </ul>
           </div>
 

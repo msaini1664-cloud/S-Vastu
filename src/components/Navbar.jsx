@@ -45,8 +45,8 @@ export default function Navbar() {
           {/* Desktop Menu */}
           <nav className="hidden md:flex space-x-8 lg:space-x-10 items-center">
             {['Home', 'About', 'Services', 'Gallery', 'Blog', 'Contact'].map((item) => {
-              const isRoute = item === 'Home';
-              const routePath = '/';
+              const isRoute = item === 'Home' || item === 'About';
+              const routePath = item === 'Home' ? '/' : '/about';
               const hashPath = `/#${item.toLowerCase()}`;
               
               if (isRoute) {
@@ -96,8 +96,8 @@ export default function Navbar() {
             Welcome to S Vastu Solution – Trusted Vastu Consultant in Chandigarh & Zirakpur, Panchkula
           </p>
           {['Home', 'About', 'Services', 'Gallery', 'Blog', 'Contact'].map((item) => {
-            const isRoute = item === 'Home';
-            const routePath = '/';
+            const isRoute = item === 'Home' || item === 'About';
+            const routePath = item === 'Home' ? '/' : '/about';
             const hashPath = `/#${item.toLowerCase()}`;
             
             if (isRoute) {
