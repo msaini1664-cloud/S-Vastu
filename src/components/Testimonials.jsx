@@ -53,7 +53,7 @@ export default function Testimonials() {
   };
 
   return (
-    <section className="py-24 bg-[#0A192F] relative overflow-hidden">
+    <section className="py-24 bg-[#0B152A] relative overflow-hidden">
       {/* Decorative Elements */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-[#D4AF37] opacity-[0.03] blur-[100px] rounded-full"></div>
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#B8860B] opacity-[0.03] blur-[100px] rounded-full"></div>

@@ -9,8 +9,8 @@ import InstagramFeed from './components/InstagramFeed';
 import Testimonials from './components/Testimonials';
 import Blog from './components/Blog';
 import Contact from './components/Contact';
-import Products from './components/Products';
 import Footer from './components/Footer';
+import AirflowVastuChakra from './components/AirflowVastuChakra';
 
 function Home() {
   return (
@@ -18,11 +18,11 @@ function Home() {
       <Hero />
       <About />
       <Services />
+      <AirflowVastuChakra />
       <Process />
       <Gallery />
       <InstagramFeed />
       <Testimonials />
-      <Products />
       <Blog />
       <Contact />
     </>
@@ -36,13 +36,7 @@ function App() {
         <Navbar />
         <main>
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/gallery" element={<Gallery />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/products" element={<Products />} />
-            <Route path="/contact" element={<Contact />} />
+            <Route path="*" element={<Home />} />
           </Routes>
         </main>
         <Footer />

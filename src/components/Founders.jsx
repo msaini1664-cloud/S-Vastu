@@ -104,7 +104,7 @@ export default function Founders() {
                 <motion.div 
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.4 }}
-                  className="relative p-2 rounded-tl-[6rem] rounded-tr-[12rem] rounded-bl-[2rem] rounded-br-[12rem] bg-gradient-to-br from-[#D4AF37] via-[#f8f0dd] to-[#e6c888] shadow-[0_20px_50px_rgba(0,0,0,0.5)] w-full max-w-[450px]"
+                  className="relative p-2 rounded-tl-[6rem] rounded-tr-[12rem] rounded-bl-[2rem] rounded-br-[12rem] bg-gradient-to-br from-[#D4AF37] via-[#f8f0dd] to-[#e6c888] shadow-[0_20px_50px_rgba(0,0,0,0.5)] w-full max-w-[550px]"
                 >
                   {/* Inner dark border padding */}
                   <div className="p-3 bg-[#0B152A] rounded-tl-[5.5rem] rounded-tr-[11.5rem] rounded-bl-[1.5rem] rounded-br-[11.5rem] h-full w-full">
@@ -189,7 +189,7 @@ export default function Founders() {
                 <motion.div 
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.4 }}
-                  className="relative p-2 rounded-tr-[6rem] rounded-tl-[12rem] rounded-br-[2rem] rounded-bl-[12rem] bg-gradient-to-bl from-[#D4AF37] via-[#f8f0dd] to-[#e6c888] shadow-[0_20px_50px_rgba(0,0,0,0.5)] w-full max-w-[450px]"
+                  className="relative p-2 rounded-tr-[6rem] rounded-tl-[12rem] rounded-br-[2rem] rounded-bl-[12rem] bg-gradient-to-bl from-[#D4AF37] via-[#f8f0dd] to-[#e6c888] shadow-[0_20px_50px_rgba(0,0,0,0.5)] w-full max-w-[550px]"
                 >
                   {/* Inner dark border padding */}
                   <div className="p-3 bg-[#0B152A] rounded-tr-[5.5rem] rounded-tl-[11.5rem] rounded-br-[1.5rem] rounded-bl-[11.5rem] h-full w-full">
