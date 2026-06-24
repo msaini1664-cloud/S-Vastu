@@ -1,6 +1,6 @@
 
 import { Home, Building2, Factory, Hash, Monitor, Map } from 'lucide-react';
-import numerologyImg from '../assets/numerology.jpeg';
+import numerologyImg from '../assets/7 nume.webp';
 
 export default function Services() {
   const services = [
@@ -26,8 +26,7 @@ export default function Services() {
       icon: <Hash className="w-10 h-10 text-white" />,
       title: "Numerology Integration",
       description: "Combine the power of your numbers with Vastu. We provide personalized remedies based on your date of birth and planetary alignments.",
-      image: numerologyImg,
-      filter: "hue-rotate(-70deg) saturate(1.5) contrast(1.1)"
+      image: numerologyImg
     },
     {
       icon: <Monitor className="w-10 h-10 text-white" />,

@@ -11,6 +11,7 @@ import Blog from './components/Blog';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import AirflowVastuChakra from './components/AirflowVastuChakra';
+import AboutPage from './Pages/AboutPage';
 
 function Home() {
   return (
@@ -36,6 +37,8 @@ function App() {
         <Navbar />
         <main>
           <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<AboutPage />} />
             <Route path="*" element={<Home />} />
           </Routes>
         </main>
