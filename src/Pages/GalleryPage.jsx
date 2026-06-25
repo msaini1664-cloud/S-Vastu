@@ -43,7 +43,9 @@ export default function GalleryPage() {
       </section>
 
       {/* Gallery Component */}
-      <Gallery />
+      <div className="bg-[#050A15]">
+        <Gallery hideHeader={true} />
+      </div>
 
       {/* Call to Action */}
       <section className="py-24 bg-white">

@@ -1,149 +1,167 @@
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Maximize2 } from 'lucide-react';
 
-export default function Gallery() {
-  const images = [
-    {
-      src: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=800&auto=format&fit=crop",
-      alt: "Luxury Living Room",
-      category: "Residential"
-    },
-    {
-      src: "https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=800&auto=format&fit=crop",
-      alt: "Modern Interior",
-      category: "Vastu Compliant"
-    },
-    {
-      src: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=800&auto=format&fit=crop",
-      alt: "Elegant Bedroom",
-      category: "Residential"
-    },
-    {
-      src: "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?q=80&w=800&auto=format&fit=crop",
-      alt: "Architectural Design",
-      category: "Commercial"
-    },
-    {
-      src: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop",
-      alt: "Spacious Hall",
-      category: "Vastu Compliant"
-    },
-    {
-      src: "https://images.unsplash.com/photo-1593696140826-c58b021acf8b?q=80&w=800&auto=format&fit=crop",
-      alt: "Office Space Vastu",
-      category: "Commercial"
-    }
-  ];
+const categories = ["All", "Residential", "Commercial", "Vastu Compliant"];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15
-      }
-    }
-  };
+const images = [
+  {
+    id: 1,
+    src: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=800&auto=format&fit=crop",
+    alt: "Luxury Living Room",
+    category: "Residential",
+    size: "large" // Takes more space
+  },
+  {
+    id: 2,
+    src: "https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=800&auto=format&fit=crop",
+    alt: "Modern Interior",
+    category: "Vastu Compliant",
+    size: "small"
+  },
+  {
+    id: 3,
+    src: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=800&auto=format&fit=crop",
+    alt: "Elegant Bedroom",
+    category: "Residential",
+    size: "medium"
+  },
+  {
+    id: 4,
+    src: "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?q=80&w=800&auto=format&fit=crop",
+    alt: "Architectural Design",
+    category: "Commercial",
+    size: "small"
+  },
+  {
+    id: 5,
+    src: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop",
+    alt: "Spacious Hall",
+    category: "Vastu Compliant",
+    size: "medium"
+  },
+  {
+    id: 6,
+    src: "https://images.unsplash.com/photo-1593696140826-c58b021acf8b?q=80&w=800&auto=format&fit=crop",
+    alt: "Office Space Vastu",
+    category: "Commercial",
+    size: "large"
+  }
+];
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 40 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: { duration: 0.8, ease: "easeOut" }
-    }
-  };
+export default function Gallery({ hideHeader = false }) {
+  const [activeCategory, setActiveCategory] = useState("All");
+
+  const filteredImages = images.filter(img => 
+    activeCategory === "All" ? true : img.category === activeCategory
+  );
 
   return (
-    <section id="gallery" className="py-24 bg-[#0B152A] relative overflow-hidden">
-      {/* Decorative background elements */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <div className="absolute -top-24 -left-24 w-96 h-96 bg-[#D4AF37]/5 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 right-0 w-64 h-64 bg-[#38bdf8]/5 rounded-full blur-3xl"></div>
+    <section id="gallery" className={`py-24 relative overflow-hidden ${hideHeader ? 'bg-transparent' : 'bg-[#050A15]'}`}>
+      {/* Abstract Background */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-bl from-[#D4AF37]/5 to-transparent rounded-full blur-[100px] translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gradient-to-tr from-[#38bdf8]/5 to-transparent rounded-full blur-[100px] -translate-x-1/2 translate-y-1/2" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+        {!hideHeader && (
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center max-w-3xl mx-auto mb-16"
+          >
+            <div className="inline-flex items-center gap-3 mb-4 px-4 py-2 rounded-full bg-[#D4AF37]/10 border border-[#D4AF37]/20 backdrop-blur-sm">
+              <span className="w-2 h-2 rounded-full bg-[#D4AF37] animate-pulse" />
+              <span className="text-[#D4AF37] text-xs sm:text-sm font-medium tracking-wider uppercase">Portfolio</span>
+              <span className="w-2 h-2 rounded-full bg-[#D4AF37] animate-pulse" />
+            </div>
+            
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight">
+              Project <span className="font-serif italic text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] via-yellow-200 to-[#D4AF37]">Gallery</span>
+            </h2>
+            <p className="text-slate-400 text-lg sm:text-xl font-light">
+              A visual journey through spaces transformed by authentic Vastu principles, where energy meets elegance.
+            </p>
+          </motion.div>
+        )}
+
+        {/* Filters */}
         <motion.div 
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="flex flex-wrap justify-center gap-3 mb-12"
         >
-          <span className="text-[#D4AF37] font-serif italic tracking-widest uppercase text-sm sm:text-base block mb-3">Our Masterpieces</span>
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-white mt-2 mb-6 tracking-tight">
-            Project <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#f8f0dd]">Gallery</span>
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-[#D4AF37] to-transparent mx-auto rounded-full mb-6"></div>
-          <p className="text-slate-300 text-lg sm:text-xl font-light">
-            A visual journey through the spaces we have energized and transformed with authentic Vastu principles.
-          </p>
+          {categories.map((category) => (
+            <button
+              key={category}
+              onClick={() => setActiveCategory(category)}
+              className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 backdrop-blur-md ${
+                activeCategory === category
+                  ? "bg-[#D4AF37] text-[#050A15] shadow-[0_0_20px_rgba(212,175,55,0.4)] scale-105"
+                  : "bg-white/5 text-slate-300 border border-white/10 hover:bg-white/10 hover:text-white"
+              }`}
+            >
+              {category}
+            </button>
+          ))}
         </motion.div>
 
+        {/* Gallery Grid */}
         <motion.div 
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6 sm:gap-8 sm:space-y-8"
+          layout
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[250px]"
         >
-          {images.map((image, index) => {
-            const heights = ['h-96', 'h-64', 'h-[26rem]', 'h-[22rem]', 'h-80', 'h-[28rem]'];
-            const heightClass = heights[index % heights.length];
-            return (
-              <motion.div 
-                key={index} 
-                variants={itemVariants}
-                whileHover={{ y: -10, scale: 1.02 }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
-                className={`group relative overflow-hidden rounded-2xl cursor-pointer shadow-lg hover:shadow-[0_20px_50px_rgba(253,224,71,0.3)] border-2 border-yellow-300/80 break-inside-avoid ${heightClass}`}
+          <AnimatePresence mode='popLayout'>
+            {filteredImages.map((image) => (
+              <motion.div
+                layout
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                transition={{ duration: 0.5, type: "spring", bounce: 0.4 }}
+                key={image.id}
+                className={`group relative rounded-3xl overflow-hidden cursor-pointer border border-white/10 hover:border-[#D4AF37]/50 shadow-lg ${
+                  image.size === 'large' ? 'md:col-span-2 md:row-span-2' : 
+                  image.size === 'medium' ? 'md:row-span-2' : 
+                  'md:col-span-1 md:row-span-1'
+                }`}
               >
-                {/* Image with zoom effect */}
+                <div className="absolute inset-0 bg-[#050A15]/20 group-hover:bg-transparent transition-colors duration-500 z-10" />
                 <img 
                   src={image.src} 
-                  alt={image.alt} 
-                  className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-in-out"
+                  alt={image.alt}
+                  className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-out"
                 />
                 
-                {/* Premium Dark Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0B152A] via-[#0B152A]/60 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-500"></div>
-                
-                {/* Content Overlay */}
-                <div className="absolute inset-0 p-8 flex flex-col justify-end overflow-hidden">
-                  <div className="transform translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out">
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="w-8 h-[1px] bg-[#D4AF37]"></div>
-                      <span className="text-[#D4AF37] text-[10px] sm:text-xs font-bold uppercase tracking-widest">
-                        {image.category}
-                      </span>
-                    </div>
-                    <h3 className="text-white font-serif text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight drop-shadow-md">
+                {/* Overlay */}
+                <div className="absolute inset-0 z-20 bg-gradient-to-t from-[#050A15] via-[#050A15]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
+                  <motion.div 
+                    initial={{ y: 20, opacity: 0 }}
+                    whileHover={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                    className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500"
+                  >
+                    <span className="inline-block px-3 py-1 rounded-full bg-[#D4AF37]/20 border border-[#D4AF37]/30 text-[#D4AF37] text-xs font-semibold uppercase tracking-wider mb-3 backdrop-blur-md">
+                      {image.category}
+                    </span>
+                    <h3 className="text-2xl font-bold text-white mb-2 drop-shadow-lg">
                       {image.alt}
                     </h3>
-                  </div>
+                  </motion.div>
                   
-                  {/* Expand Icon - Animated */}
-                  <div className="absolute top-6 right-6 w-12 h-12 rounded-full bg-[#D4AF37]/20 backdrop-blur-md border border-[#D4AF37]/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transform scale-50 group-hover:scale-100 transition-all duration-500 delay-100">
-                    <Maximize2 className="w-5 h-5 text-[#D4AF37]" />
+                  {/* View Icon */}
+                  <div className="absolute top-6 right-6 w-12 h-12 rounded-full bg-white/10 border border-white/20 backdrop-blur-md flex items-center justify-center opacity-0 group-hover:opacity-100 transform scale-50 group-hover:scale-100 transition-all duration-500 delay-100 hover:bg-[#D4AF37] hover:border-[#D4AF37] group/icon">
+                    <Maximize2 className="w-5 h-5 text-white group-hover/icon:text-[#050A15] transition-colors" />
                   </div>
                 </div>
-                
               </motion.div>
-            );
-          })}
-        </motion.div>
-        
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="mt-16 text-center"
-        >
-          <button className="bg-transparent border border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-[#0B152A] font-bold py-3 px-8 rounded-full transition-all duration-300 uppercase tracking-widest text-sm shadow-[0_0_15px_rgba(212,175,55,0.2)] hover:shadow-[0_0_25px_rgba(212,175,55,0.4)] transform hover:-translate-y-1">
-            View All Projects
-          </button>
+            ))}
+          </AnimatePresence>
         </motion.div>
         
       </div>
