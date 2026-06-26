@@ -10,42 +10,42 @@ const images = [
     src: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=800&auto=format&fit=crop",
     alt: "Luxury Living Room",
     category: "Residential",
-    size: "large" // Takes more space
+    size: "wide" // Top left: col-span-2, row-span-1
   },
   {
     id: 2,
     src: "https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=800&auto=format&fit=crop",
     alt: "Modern Interior",
     category: "Vastu Compliant",
-    size: "small"
+    size: "small" // Top right: col-span-1, row-span-1
   },
   {
     id: 3,
     src: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=800&auto=format&fit=crop",
     alt: "Elegant Bedroom",
     category: "Residential",
-    size: "medium"
+    size: "tall" // Bottom left: col-span-1, row-span-2
   },
   {
     id: 4,
     src: "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?q=80&w=800&auto=format&fit=crop",
     alt: "Architectural Design",
     category: "Commercial",
-    size: "small"
+    size: "tall" // Bottom middle: col-span-1, row-span-2
   },
   {
     id: 5,
     src: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop",
     alt: "Spacious Hall",
     category: "Vastu Compliant",
-    size: "medium"
+    size: "small" // Bottom right top: col-span-1, row-span-1
   },
   {
     id: 6,
     src: "https://images.unsplash.com/photo-1593696140826-c58b021acf8b?q=80&w=800&auto=format&fit=crop",
     alt: "Office Space Vastu",
     category: "Commercial",
-    size: "large"
+    size: "small" // Bottom right bottom: col-span-1, row-span-1
   }
 ];
 
@@ -111,56 +111,54 @@ export default function Gallery({ hideHeader = false }) {
           ))}
         </motion.div>
 
-        {/* Gallery Grid */}
+        {/* Gallery Collage Grid */}
         <motion.div 
-          layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[250px]"
+          layout 
+          className="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-[200px] max-w-5xl mx-auto"
         >
           <AnimatePresence mode='popLayout'>
-            {filteredImages.map((image) => (
-              <motion.div
-                layout
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
-                transition={{ duration: 0.5, type: "spring", bounce: 0.4 }}
-                key={image.id}
-                className={`group relative rounded-3xl overflow-hidden cursor-pointer border border-white/10 hover:border-[#D4AF37]/50 shadow-lg ${
-                  image.size === 'large' ? 'md:col-span-2 md:row-span-2' : 
-                  image.size === 'medium' ? 'md:row-span-2' : 
-                  'md:col-span-1 md:row-span-1'
-                }`}
-              >
-                <div className="absolute inset-0 bg-[#050A15]/20 group-hover:bg-transparent transition-colors duration-500 z-10" />
+            {filteredImages.map((image) => {
+              let spanClass = "";
+              if (image.size === 'wide') spanClass = "md:col-span-2 md:row-span-1";
+              else if (image.size === 'tall') spanClass = "md:col-span-1 md:row-span-2";
+              else spanClass = "md:col-span-1 md:row-span-1";
+
+              return (
+                <motion.div
+                  layout
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.8 }}
+                  transition={{ duration: 0.5, type: "spring", bounce: 0.4 }}
+                  key={image.id}
+                  className={`group relative rounded-2xl overflow-hidden cursor-pointer border border-white/10 hover:border-[#D4AF37]/50 shadow-lg w-full ${spanClass}`}
+                >
+                <div className="absolute inset-0 bg-[#050A15]/20 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none" />
                 <img 
                   src={image.src} 
                   alt={image.alt}
-                  className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-out"
+                  className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-out block"
                 />
                 
-                {/* Overlay */}
-                <div className="absolute inset-0 z-20 bg-gradient-to-t from-[#050A15] via-[#050A15]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
-                  <motion.div 
-                    initial={{ y: 20, opacity: 0 }}
-                    whileHover={{ y: 0, opacity: 1 }}
-                    transition={{ duration: 0.3 }}
-                    className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500"
-                  >
-                    <span className="inline-block px-3 py-1 rounded-full bg-[#D4AF37]/20 border border-[#D4AF37]/30 text-[#D4AF37] text-xs font-semibold uppercase tracking-wider mb-3 backdrop-blur-md">
+                {/* Overlay (Always visible text) */}
+                <div className="absolute inset-0 z-20 bg-gradient-to-t from-[#050A15]/80 via-[#050A15]/10 to-transparent flex flex-col justify-end p-6 pointer-events-none">
+                  <div className="transform transition-transform duration-500 group-hover:-translate-y-2">
+                    <span className="inline-block px-3 py-1 rounded-full bg-[#D4AF37]/20 border border-[#D4AF37]/30 text-[#D4AF37] text-[10px] font-semibold uppercase tracking-wider mb-2 backdrop-blur-md">
                       {image.category}
                     </span>
-                    <h3 className="text-2xl font-bold text-white mb-2 drop-shadow-lg">
+                    <h3 className="text-xl font-bold text-white mb-1 drop-shadow-lg leading-tight">
                       {image.alt}
                     </h3>
-                  </motion.div>
+                  </div>
                   
-                  {/* View Icon */}
-                  <div className="absolute top-6 right-6 w-12 h-12 rounded-full bg-white/10 border border-white/20 backdrop-blur-md flex items-center justify-center opacity-0 group-hover:opacity-100 transform scale-50 group-hover:scale-100 transition-all duration-500 delay-100 hover:bg-[#D4AF37] hover:border-[#D4AF37] group/icon">
-                    <Maximize2 className="w-5 h-5 text-white group-hover/icon:text-[#050A15] transition-colors" />
+                  {/* View Icon (Hover only) */}
+                  <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/10 border border-white/20 backdrop-blur-md flex items-center justify-center opacity-0 group-hover:opacity-100 transform scale-50 group-hover:scale-100 transition-all duration-500 delay-100 hover:bg-[#D4AF37] hover:border-[#D4AF37]">
+                    <Maximize2 className="w-4 h-4 text-white transition-colors" />
                   </div>
                 </div>
               </motion.div>
-            ))}
+              );
+            })}
           </AnimatePresence>
         </motion.div>
         

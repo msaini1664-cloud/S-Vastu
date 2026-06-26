@@ -300,13 +300,13 @@ export default function AirflowVastuChakra() {
             <p className="text-gray-300 mb-8 text-center max-w-md">Explore the energy flow in your living space according to ancient Vastu principles</p>
             
             {/* Vastu Grid */}
-            <div className="relative w-full max-w-[500px] aspect-square mx-auto mt-2 mb-4">
+            <div className="relative w-[85%] sm:w-[90%] md:w-full max-w-[500px] aspect-square mx-auto mt-6 mb-4">
               
               {/* Outer Direction Pills */}
-              <div className="absolute top-0 -translate-y-1/2 left-1/2 -translate-x-1/2 bg-white px-6 py-1.5 rounded-full shadow-md text-slate-800 font-black text-base lg:text-lg border border-gray-200 z-20">North</div>
-              <div className="absolute bottom-0 translate-y-1/2 left-1/2 -translate-x-1/2 bg-white px-6 py-1.5 rounded-full shadow-md text-slate-800 font-black text-base lg:text-lg border border-gray-200 z-20">South</div>
-              <div className="absolute top-1/2 -translate-y-1/2 left-0 -translate-x-1/2 bg-white px-6 py-1.5 rounded-full shadow-md text-slate-800 font-black text-base lg:text-lg border border-gray-200 z-20">West</div>
-              <div className="absolute top-1/2 -translate-y-1/2 right-0 translate-x-1/2 bg-white px-6 py-1.5 rounded-full shadow-md text-slate-800 font-black text-base lg:text-lg border border-gray-200 z-20">East</div>
+              <div className="absolute top-0 -translate-y-1/2 left-1/2 -translate-x-1/2 bg-white px-3 py-1 md:px-6 md:py-1.5 rounded-full shadow-md text-slate-800 font-black text-xs md:text-base lg:text-lg border border-gray-200 z-20">North</div>
+              <div className="absolute bottom-0 translate-y-1/2 left-1/2 -translate-x-1/2 bg-white px-3 py-1 md:px-6 md:py-1.5 rounded-full shadow-md text-slate-800 font-black text-xs md:text-base lg:text-lg border border-gray-200 z-20">South</div>
+              <div className="absolute top-1/2 -translate-y-1/2 left-0 -translate-x-1/2 bg-white px-3 py-1 md:px-6 md:py-1.5 rounded-full shadow-md text-slate-800 font-black text-xs md:text-base lg:text-lg border border-gray-200 z-20">West</div>
+              <div className="absolute top-1/2 -translate-y-1/2 right-0 translate-x-1/2 bg-white px-3 py-1 md:px-6 md:py-1.5 rounded-full shadow-md text-slate-800 font-black text-xs md:text-base lg:text-lg border border-gray-200 z-20">East</div>
 
               {/* Grid Container */}
               <div className="w-full h-full grid grid-cols-3 grid-rows-3 gap-1 bg-white border-[4px] border-[#2A3642] rounded-xl overflow-hidden shadow-2xl relative z-10">
@@ -321,104 +321,104 @@ export default function AirflowVastuChakra() {
                 </div>
 
                 {/* NW */}
-                <div className="bg-[#bde871] flex items-center justify-center p-2 relative z-0">
+                <div className="bg-[#bde871] flex items-center justify-center p-1 sm:p-2 relative z-0">
                   <motion.div 
                     whileHover={{ scale: 1.05 }} whileTap={{ scale: 1.15 }}
-                    className="bg-black/30 px-3 py-2 rounded-md flex flex-col items-center justify-center text-center shadow-inner min-w-[70%] cursor-pointer"
+                    className="bg-black/30 px-1 py-1 sm:px-3 sm:py-2 rounded-md flex flex-col items-center justify-center text-center shadow-inner w-[95%] sm:min-w-[70%] cursor-pointer"
                   >
-                    <p className="text-white font-bold text-base leading-tight">Northwest</p>
-                    <p className="text-white font-bold text-sm leading-tight mt-0.5">(Vayavya)</p>
+                    <p className="text-white font-bold text-[9px] sm:text-base leading-tight">Northwest</p>
+                    <p className="text-white font-bold text-[8px] sm:text-sm leading-tight mt-0.5">(Vayavya)</p>
                   </motion.div>
                 </div>
 
                 {/* N */}
-                <div className="bg-[#2fccdd] flex items-center justify-center p-2 relative z-0">
+                <div className="bg-[#2fccdd] flex items-center justify-center p-1 sm:p-2 relative z-0">
                   <motion.div 
                     whileHover={{ scale: 1.05 }} whileTap={{ scale: 1.15 }}
-                    className="bg-black/30 px-3 py-3 rounded-md flex flex-col items-center justify-center text-center shadow-inner min-w-[85%] relative cursor-pointer"
+                    className="bg-black/30 px-1 py-1 sm:px-3 sm:py-3 rounded-md flex flex-col items-center justify-center text-center shadow-inner w-[95%] sm:min-w-[85%] relative cursor-pointer"
                   >
-                    <div className="absolute -top-[12px] left-1/2 -translate-x-1/2 text-green-500 pointer-events-none"><svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4l8 16H4z"/></svg></div>
-                    <p className="text-white font-bold text-lg leading-tight">North</p>
-                    <p className="text-white font-bold text-base leading-tight mt-0.5">(Ishanya)</p>
+                    <div className="absolute -top-[8px] sm:-top-[12px] left-1/2 -translate-x-1/2 text-green-500 pointer-events-none"><svg className="w-4 h-4 sm:w-6 sm:h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4l8 16H4z"/></svg></div>
+                    <p className="text-white font-bold text-[10px] sm:text-lg leading-tight">North</p>
+                    <p className="text-white font-bold text-[9px] sm:text-base leading-tight mt-0.5">(Ishanya)</p>
                   </motion.div>
                 </div>
 
                 {/* NE */}
-                <div className="bg-[#2fccdd] flex items-center justify-center p-2 relative z-0">
+                <div className="bg-[#2fccdd] flex items-center justify-center p-1 sm:p-2 relative z-0">
                   <motion.div 
                     whileHover={{ scale: 1.05 }} whileTap={{ scale: 1.15 }}
-                    className="bg-black/30 px-3 py-2 rounded-md flex flex-col items-center justify-center text-center shadow-inner min-w-[70%] cursor-pointer"
+                    className="bg-black/30 px-1 py-1 sm:px-3 sm:py-2 rounded-md flex flex-col items-center justify-center text-center shadow-inner w-[95%] sm:min-w-[70%] cursor-pointer"
                   >
-                    <p className="text-white font-bold text-base leading-tight">Northeast</p>
-                    <p className="text-white font-bold text-sm leading-tight mt-0.5">(Eshanya)</p>
+                    <p className="text-white font-bold text-[9px] sm:text-base leading-tight">Northeast</p>
+                    <p className="text-white font-bold text-[8px] sm:text-sm leading-tight mt-0.5">(Eshanya)</p>
                   </motion.div>
                 </div>
 
                 {/* W */}
-                <div className="bg-[#96cc41] flex items-center justify-center p-2 relative z-0">
+                <div className="bg-[#96cc41] flex items-center justify-center p-1 sm:p-2 relative z-0">
                   <motion.div 
                     whileHover={{ scale: 1.05 }} whileTap={{ scale: 1.15 }}
-                    className="bg-black/30 px-3 py-3 rounded-md flex flex-col items-center justify-center text-center shadow-inner min-w-[85%] relative cursor-pointer"
+                    className="bg-black/30 px-1 py-1 sm:px-3 sm:py-3 rounded-md flex flex-col items-center justify-center text-center shadow-inner w-[95%] sm:min-w-[85%] relative cursor-pointer"
                   >
-                    <div className="absolute top-1/2 -left-[12px] -translate-x-0 -translate-y-1/2 text-green-500 pointer-events-none"><svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4l8 16H4z"/></svg></div>
-                    <p className="text-white font-bold text-lg leading-tight">West</p>
-                    <p className="text-white font-bold text-base leading-tight mt-0.5">(Paschim)</p>
+                    <div className="absolute top-1/2 -left-[8px] sm:-left-[12px] -translate-x-0 -translate-y-1/2 text-green-500 pointer-events-none"><svg className="w-4 h-4 sm:w-6 sm:h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4l8 16H4z"/></svg></div>
+                    <p className="text-white font-bold text-[10px] sm:text-lg leading-tight">West</p>
+                    <p className="text-white font-bold text-[9px] sm:text-base leading-tight mt-0.5">(Paschim)</p>
                   </motion.div>
                 </div>
 
                 {/* Center */}
-                <div className="bg-gradient-to-br from-[#fffa8a] to-[#ffdb3b] flex items-center justify-center p-2 relative z-0">
+                <div className="bg-gradient-to-br from-[#fffa8a] to-[#ffdb3b] flex items-center justify-center p-1 sm:p-2 relative z-0">
                   <motion.p 
                     whileHover={{ scale: 1.1 }} whileTap={{ scale: 1.2 }}
-                    className="text-[#2A3642] font-black text-2xl tracking-wide z-20 cursor-pointer select-none"
+                    className="text-[#2A3642] font-black text-[10px] sm:text-xl lg:text-2xl tracking-wide md:tracking-wide z-20 cursor-pointer select-none text-center"
                   >
                     Brahmasthan
                   </motion.p>
                 </div>
 
                 {/* E */}
-                <div className="bg-[#96cc41] flex items-center justify-center p-2 relative z-0">
+                <div className="bg-[#96cc41] flex items-center justify-center p-1 sm:p-2 relative z-0">
                   <motion.div 
                     whileHover={{ scale: 1.05 }} whileTap={{ scale: 1.15 }}
-                    className="bg-black/30 px-3 py-3 rounded-md flex flex-col items-center justify-center text-center shadow-inner min-w-[85%] relative cursor-pointer"
+                    className="bg-black/30 px-1 py-1 sm:px-3 sm:py-3 rounded-md flex flex-col items-center justify-center text-center shadow-inner w-[95%] sm:min-w-[85%] relative cursor-pointer"
                   >
-                    <div className="absolute top-1/2 -right-[12px] -translate-y-1/2 text-green-500 pointer-events-none"><svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4l8 16H4z"/></svg></div>
-                    <p className="text-white font-bold text-lg leading-tight">East</p>
-                    <p className="text-white font-bold text-base leading-tight mt-0.5">(Purva)</p>
+                    <div className="absolute top-1/2 -right-[8px] sm:-right-[12px] -translate-y-1/2 text-green-500 pointer-events-none"><svg className="w-4 h-4 sm:w-6 sm:h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4l8 16H4z"/></svg></div>
+                    <p className="text-white font-bold text-[10px] sm:text-lg leading-tight">East</p>
+                    <p className="text-white font-bold text-[9px] sm:text-base leading-tight mt-0.5">(Purva)</p>
                   </motion.div>
                 </div>
 
                 {/* SW */}
-                <div className="bg-[#cba25b] flex items-center justify-center p-2 relative z-0">
+                <div className="bg-[#cba25b] flex items-center justify-center p-1 sm:p-2 relative z-0">
                   <motion.div 
                     whileHover={{ scale: 1.05 }} whileTap={{ scale: 1.15 }}
-                    className="bg-black/30 px-3 py-2 rounded-md flex flex-col items-center justify-center text-center shadow-inner min-w-[70%] cursor-pointer"
+                    className="bg-black/30 px-1 py-1 sm:px-3 sm:py-2 rounded-md flex flex-col items-center justify-center text-center shadow-inner w-[95%] sm:min-w-[70%] cursor-pointer"
                   >
-                    <p className="text-white font-bold text-base leading-tight">Southwest</p>
-                    <p className="text-white font-bold text-sm leading-tight mt-0.5">(Nairutya)</p>
+                    <p className="text-white font-bold text-[9px] sm:text-base leading-tight">Southwest</p>
+                    <p className="text-white font-bold text-[8px] sm:text-sm leading-tight mt-0.5">(Nairutya)</p>
                   </motion.div>
                 </div>
 
                 {/* S */}
-                <div className="bg-[#b88c4f] flex items-center justify-center p-2 relative z-0">
+                <div className="bg-[#b88c4f] flex items-center justify-center p-1 sm:p-2 relative z-0">
                   <motion.div 
                     whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
-                    className="bg-black/30 px-3 py-3 rounded-md flex flex-col items-center justify-center text-center shadow-inner min-w-[85%] relative cursor-pointer"
+                    className="bg-black/30 px-1 py-1 sm:px-3 sm:py-3 rounded-md flex flex-col items-center justify-center text-center shadow-inner w-[95%] sm:min-w-[85%] relative cursor-pointer"
                   >
-                    <div className="absolute -bottom-[12px] left-1/2 -translate-x-1/2 text-green-500/80 pointer-events-none"><svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4l8 16H4z"/></svg></div>
-                    <p className="text-white font-bold text-lg leading-tight">South</p>
-                    <p className="text-white font-bold text-base leading-tight mt-0.5">(Dakshina)</p>
+                    <div className="absolute -bottom-[8px] sm:-bottom-[12px] left-1/2 -translate-x-1/2 text-green-500/80 pointer-events-none"><svg className="w-4 h-4 sm:w-6 sm:h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4l8 16H4z"/></svg></div>
+                    <p className="text-white font-bold text-[10px] sm:text-lg leading-tight">South</p>
+                    <p className="text-white font-bold text-[9px] sm:text-base leading-tight mt-0.5">(Dakshina)</p>
                   </motion.div>
                 </div>
 
                 {/* SE */}
-                <div className="bg-[#f45656] flex items-center justify-center p-2 relative z-0">
+                <div className="bg-[#f45656] flex items-center justify-center p-1 sm:p-2 relative z-0">
                   <motion.div 
                     whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
-                    className="bg-black/30 px-3 py-2 rounded-md flex flex-col items-center justify-center text-center shadow-inner min-w-[70%] cursor-pointer"
+                    className="bg-black/30 px-1 py-1 sm:px-3 sm:py-2 rounded-md flex flex-col items-center justify-center text-center shadow-inner w-[95%] sm:min-w-[70%] cursor-pointer"
                   >
-                    <p className="text-white font-bold text-base leading-tight">Southeast</p>
-                    <p className="text-white font-bold text-sm leading-tight mt-0.5">(Agneya)</p>
+                    <p className="text-white font-bold text-[9px] sm:text-base leading-tight">Southeast</p>
+                    <p className="text-white font-bold text-[8px] sm:text-sm leading-tight mt-0.5">(Agneya)</p>
                   </motion.div>
                 </div>
               </div>
