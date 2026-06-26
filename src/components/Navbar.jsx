@@ -11,7 +11,7 @@ export default function Navbar() {
       {/* Top Bar - Info */}
       <div className="bg-[#B8860B] text-white py-2 px-4 sm:px-8 flex-col md:flex-row justify-between items-center hidden md:flex">
         <p className="text-sm font-medium tracking-wide">
-          Welcome to S-Vastu Solution – Trusted Vastu Consultant in Chandigarh & Zirakpur, Panchkula
+          Welcome to S-Vastu Solution – Trusted Vastu Consultant
         </p>
         <div className="flex gap-6 mt-2 md:mt-0 text-sm font-medium">
           <a href="tel:+910000000000" className="flex items-center gap-1.5 hover:text-yellow-200 transition-colors">
@@ -93,7 +93,7 @@ export default function Navbar() {
       <div className={`md:hidden bg-white border-t border-gray-100 shadow-2xl absolute w-full transition-all duration-300 ease-in-out ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible h-0 overflow-hidden'}`}>
         <div className="px-4 pt-4 pb-6 space-y-2">
           <p className="text-xs text-gray-500 mb-4 pb-3 border-b text-center px-4">
-            Welcome to S Vastu Solution – Trusted Vastu Consultant in Chandigarh & Zirakpur, Panchkula
+            Welcome to S Vastu Solution – Trusted Vastu Consultant
           </p>
           {['Home', 'About', 'Services', 'Gallery', 'Blog', 'Contact'].map((item) => {
             const isRoute = true;
