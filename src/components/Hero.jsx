@@ -93,7 +93,7 @@ export default function Hero() {
           variants={itemVariants}
           className="text-[#DCC197] font-medium text-xs sm:text-sm md:text-base mt-4 mb-2 sm:mb-3 drop-shadow-md uppercase tracking-[0.15em] sm:tracking-[0.2em]"
         >
-          Trusted Vastu Consultant in Chandigarh, Panchkula & Zirakpur
+          Trusted Vastu Consultant
         </motion.p>
 
         <motion.h1 

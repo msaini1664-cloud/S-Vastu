@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Sparkles } from 'lucide-react';
+import { Settings } from 'lucide-react';
 import Services from '../components/Services';
 
 export default function ServicesPage() {
@@ -31,7 +31,7 @@ export default function ServicesPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <Sparkles className="w-16 h-16 mx-auto text-[#D4AF37] mb-6 animate-pulse" />
+            <Settings className="w-16 h-16 mx-auto text-[#D4AF37] mb-6 animate-pulse" />
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-serif font-black text-white mb-6">
               Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#f8f0dd]">Services</span>
             </h1>
