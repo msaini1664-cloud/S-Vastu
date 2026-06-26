@@ -43,7 +43,7 @@ export default function BlogPage() {
       </section>
 
       {/* Blog Component */}
-      <Blog />
+      <Blog hideHeader />
 
       {/* Call to Action */}
       <section className="py-24 bg-white">

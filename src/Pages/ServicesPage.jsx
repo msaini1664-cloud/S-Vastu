@@ -43,7 +43,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Services Component */}
-      <Services />
+      <Services hideHeader />
 
       {/* Call to Action */}
       <section className="py-24 bg-white">

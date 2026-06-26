@@ -25,10 +25,10 @@ function Home() {
       <Services />
       <AirflowVastuChakra />
       <Process />
-      <Gallery />
+      <Gallery limit={6} />
       <InstagramFeed />
       <Testimonials />
-      <Blog />
+      <Blog limit={3} />
       <Contact />
     </>
   );

@@ -2,7 +2,7 @@
 import { Home, Building2, Factory, Hash, Monitor, Map } from 'lucide-react';
 import numerologyImg from '../assets/7 nume.webp';
 
-export default function Services() {
+export default function Services({ hideHeader = false }) {
   const services = [
     {
       icon: <Home className="w-10 h-10 text-white" />,
@@ -47,16 +47,18 @@ export default function Services() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-[#B8860B] font-serif italic tracking-wider text-2xl sm:text-3xl">Our Expertise</span>
-          <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 mt-3 mb-6">
-            Comprehensive <span className="text-[#B8860B]">Vastu Services</span>
-          </h2>
-          <div className="w-24 h-1 bg-[#D4AF37] mx-auto rounded-full mb-6"></div>
-          <p className="text-gray-600 text-lg">
-            Whether you are building a new property, renovating, or facing unexplained challenges in an existing space, our specialized services provide the perfect remedy.
-          </p>
-        </div>
+        {!hideHeader && (
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="text-[#B8860B] font-serif italic tracking-wider text-2xl sm:text-3xl">Our Expertise</span>
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 mt-3 mb-6">
+              Comprehensive <span className="text-[#B8860B]">Vastu Services</span>
+            </h2>
+            <div className="w-24 h-1 bg-[#D4AF37] mx-auto rounded-full mb-6"></div>
+            <p className="text-gray-600 text-lg">
+              Whether you are building a new property, renovating, or facing unexplained challenges in an existing space, our specialized services provide the perfect remedy.
+            </p>
+          </div>
+        )}
 
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
