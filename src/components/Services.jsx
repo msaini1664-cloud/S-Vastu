@@ -1,8 +1,8 @@
-
+import React from 'react';
 import { Home, Building2, Factory, Hash, Monitor, Map } from 'lucide-react';
 import numerologyImg from '../assets/7 nume.webp';
 
-export default function Services() {
+export default function Services({ hideHeader = false, layout = 'grid' }) {
   const services = [
     {
       icon: <Home className="w-10 h-10 text-white" />,
@@ -43,54 +43,104 @@ export default function Services() {
   ];
 
   return (
-    <section id="services" className="py-24 bg-slate-50 relative">
+    <section id="services" className={`bg-slate-50 relative ${hideHeader ? 'py-10' : 'py-24'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-[#B8860B] font-serif italic tracking-wider text-2xl sm:text-3xl">Our Expertise</span>
-          <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 mt-3 mb-6">
-            Comprehensive <span className="text-[#B8860B]">Vastu Services</span>
-          </h2>
-          <div className="w-24 h-1 bg-[#D4AF37] mx-auto rounded-full mb-6"></div>
-          <p className="text-gray-600 text-lg">
-            Whether you are building a new property, renovating, or facing unexplained challenges in an existing space, our specialized services provide the perfect remedy.
-          </p>
-        </div>
+        {!hideHeader && (
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="text-[#B8860B] font-serif italic tracking-wider text-2xl sm:text-3xl">Our Expertise</span>
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 mt-3 mb-6">
+              Comprehensive <span className="text-[#B8860B]">Vastu Services</span>
+            </h2>
+            <div className="w-24 h-1 bg-[#D4AF37] mx-auto rounded-full mb-6"></div>
+            <p className="text-gray-600 text-lg">
+              Whether you are building a new property, renovating, or facing unexplained challenges in an existing space, our specialized services provide the perfect remedy.
+            </p>
+          </div>
+        )}
 
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <div key={index} className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 border border-gray-100 flex flex-col h-full">
-              {/* Image Header */}
-              <div className="relative h-40 overflow-hidden">
-                <img 
-                  src={service.image} 
-                  alt={service.title} 
-                  className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-                  style={service.filter ? { filter: service.filter } : {}}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent"></div>
-              </div>
-              
-              {/* Content */}
-              <div className="p-6 pt-6 flex-1 flex flex-col">
-                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#B8860B] transition-colors">
+        {layout === 'grid' ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            {services.map((service, index) => (
+              <div key={index} className="group bg-white p-8 border border-dashed border-gray-300 hover:border-[#D4AF37] transition-colors duration-300 flex flex-col items-center text-center h-full">
+                
+                {/* Double Dotted Icon Container */}
+                <div className="w-24 h-24 rounded-full border border-dashed border-gray-300 group-hover:border-[#D4AF37] flex items-center justify-center mb-6 transition-colors duration-300">
+                  <div className="w-20 h-20 rounded-full border border-dashed border-gray-200 flex items-center justify-center group-hover:bg-[#D4AF37] transition-all duration-300">
+                    <div className="text-[#B8860B] group-hover:text-white transition-colors duration-300">
+                      {React.cloneElement(service.icon, { className: "w-8 h-8" })}
+                    </div>
+                  </div>
+                </div>
+
+                <h3 className="text-lg font-bold text-gray-900 group-hover:text-[#B8860B] mb-4 uppercase tracking-wider transition-colors duration-300">
                   {service.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed mb-6 flex-1">
+                
+                <p className="text-gray-500 text-sm leading-relaxed flex-1 mb-6">
                   {service.description}
                 </p>
                 
-                {/* Button */}
-                <button className="flex items-center gap-2 text-sm font-bold text-gray-900 border-b-2 border-[#D4AF37] pb-1 self-start hover:text-[#B8860B] transition-colors">
-                  Explore Service
-                  <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                </button>
+                {/* Action Link */}
+                <div className="mt-auto inline-flex items-center gap-2 text-sm font-bold text-[#B8860B] group-hover:text-[#D4AF37] transition-colors duration-300 cursor-pointer">
+                  <span>Read More</span>
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                </div>
+
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        ) : (
+          <div className="flex flex-col gap-8 lg:gap-12">
+            {services.map((service, index) => {
+              const isEven = index % 2 === 0;
+              
+              return (
+                <div key={index} className={`flex flex-col lg:flex-row gap-6 lg:gap-8 ${!isEven ? 'lg:flex-row-reverse' : ''}`}>
+                  
+                  {/* Text Card */}
+                  <div className="w-full lg:w-1/2 bg-white rounded-3xl p-8 lg:p-12 shadow-sm border border-gray-100 flex flex-col justify-center hover:shadow-[0_20px_50px_rgba(212,175,55,0.08)] transition-all duration-300 relative overflow-hidden group">
+                    {/* Subtle Background Accent */}
+                    <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-[#D4AF37]/10 to-transparent rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none group-hover:scale-150 transition-transform duration-700"></div>
+
+                    {/* Icon */}
+                    <div className="w-16 h-16 rounded-2xl bg-[#D4AF37]/10 flex items-center justify-center mb-8 border border-[#D4AF37]/20 group-hover:bg-[#D4AF37] group-hover:shadow-[0_10px_20px_rgba(212,175,55,0.3)] transition-all duration-500">
+                      <div className="text-[#B8860B] group-hover:text-white transition-colors duration-500">
+                        {React.cloneElement(service.icon, { className: "w-8 h-8" })}
+                      </div>
+                    </div>
+                    
+                    <h3 className="text-3xl font-bold text-gray-900 mb-4 group-hover:text-[#B8860B] transition-colors duration-300">
+                      {service.title}
+                    </h3>
+                    
+                    <p className="text-gray-600 text-lg leading-relaxed mb-8 flex-1">
+                      {service.description}
+                    </p>
+                    
+                    <div className="mt-auto flex items-center gap-2 text-sm font-bold text-[#B8860B] cursor-pointer w-fit border-b border-[#D4AF37]/30 pb-1 hover:border-[#D4AF37] transition-all duration-300">
+                      <span>Explore Service</span>
+                      <svg className="w-4 h-4 transform group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </div>
+                  </div>
+
+                  {/* Image Card */}
+                  <div className="w-full lg:w-1/2 h-64 sm:h-80 lg:h-auto min-h-[320px] rounded-3xl overflow-hidden shadow-sm relative group">
+                    <img 
+                      src={service.image} 
+                      alt={service.title} 
+                      className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                    />
+                    {/* Gentle overlay for premium feel */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  </div>
+
+                </div>
+              );
+            })}
+          </div>
+        )}
 
       </div>
     </section>
