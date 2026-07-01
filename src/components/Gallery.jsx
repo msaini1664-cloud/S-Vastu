@@ -1,58 +1,33 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Maximize2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { GALLERY_API } from '../utils/api';
 
-const categories = ["All", "Residential", "Commercial", "Vastu Compliant"];
-
-const images = [
-  {
-    id: 1,
-    src: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=800&auto=format&fit=crop",
-    alt: "Luxury Living Room",
-    category: "Residential",
-    size: "large" // Takes more space
-  },
-  {
-    id: 2,
-    src: "https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=800&auto=format&fit=crop",
-    alt: "Modern Interior",
-    category: "Vastu Compliant",
-    size: "small"
-  },
-  {
-    id: 3,
-    src: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=800&auto=format&fit=crop",
-    alt: "Elegant Bedroom",
-    category: "Residential",
-    size: "medium"
-  },
-  {
-    id: 4,
-    src: "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?q=80&w=800&auto=format&fit=crop",
-    alt: "Architectural Design",
-    category: "Commercial",
-    size: "small"
-  },
-  {
-    id: 5,
-    src: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop",
-    alt: "Spacious Hall",
-    category: "Vastu Compliant",
-    size: "medium"
-  }
-  ,
-  {
-    id: 6,
-    src: "https://images.unsplash.com/photo-1593696140826-c58b021acf8b?q=80&w=800&auto=format&fit=crop",
-    alt: "Office Space Vastu",
-    category: "Commercial",
-    size: "large"
-  }
-];
+const defaultCategories = ["All", "Residential", "Commercial", "Vastu Compliant"];
 
 export default function Gallery({ hideHeader = false, limit }) {
   const [activeCategory, setActiveCategory] = useState("All");
+  const [images, setImages] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchGallery = async () => {
+      try {
+        const { data } = await axios.get(GALLERY_API);
+        setImages(data);
+      } catch (err) {
+        console.error("Error fetching gallery", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchGallery();
+  }, []);
+
+  const categories = ["All", ...new Set(images.map(img => img.category))];
+  const displayCategories = categories.length > 1 ? categories : defaultCategories;
 
   const filteredImages = images.filter(img =>
     activeCategory === "All" ? true : img.category === activeCategory
@@ -62,7 +37,7 @@ export default function Gallery({ hideHeader = false, limit }) {
   const hasMore = limit && filteredImages.length > limit;
 
   return (
-    <section id="gallery" className={`py-24 relative overflow-hidden ${hideHeader ? 'bg-transparent' : 'bg-[#050A15]'}`}>
+    <section id="gallery" className={`relative overflow-hidden ${hideHeader ? 'bg-transparent py-10' : 'bg-[#050A15] py-24'}`}>
       {/* Abstract Background */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-bl from-[#D4AF37]/5 to-transparent rounded-full blur-[100px] translate-x-1/2 -translate-y-1/2" />
@@ -94,32 +69,39 @@ export default function Gallery({ hideHeader = false, limit }) {
         )}
 
         {/* Filters */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="flex flex-wrap justify-center gap-3 mb-12"
-        >
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setActiveCategory(category)}
-              className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 backdrop-blur-md ${activeCategory === category
-                ? "bg-[#D4AF37] text-[#050A15] shadow-[0_0_20px_rgba(212,175,55,0.4)] scale-105"
-                : "bg-white/5 text-slate-300 border border-white/10 hover:bg-white/10 hover:text-white"
-                }`}
-            >
-              {category}
-            </button>
-          ))}
-        </motion.div>
+        {!loading && displayCategories.length > 1 && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="flex flex-wrap justify-center gap-3 mb-12"
+          >
+            {displayCategories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setActiveCategory(category)}
+                className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 backdrop-blur-md ${activeCategory === category
+                  ? "bg-[#D4AF37] text-[#050A15] shadow-[0_0_20px_rgba(212,175,55,0.4)] scale-105"
+                  : "bg-white/5 text-slate-300 border border-white/10 hover:bg-white/10 hover:text-white"
+                  }`}
+              >
+                {category}
+              </button>
+            ))}
+          </motion.div>
+        )}
 
         {/* Gallery Grid */}
-        <motion.div
-          layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 auto-rows-[250px] lg:auto-rows-[300px] grid-flow-dense"
-        >
+        {loading ? (
+          <div className="flex justify-center items-center py-20">
+            <div className="w-10 h-10 border-4 border-[#D4AF37] border-t-transparent rounded-full animate-spin"></div>
+          </div>
+        ) : (
+          <motion.div
+            layout
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 auto-rows-[250px] lg:auto-rows-[300px] grid-flow-dense"
+          >
           <AnimatePresence mode='popLayout'>
             {displayedImages.map((image, index) => {
               // Create a perfect gap-free bento layout when all images are shown
@@ -142,7 +124,7 @@ export default function Gallery({ hideHeader = false, limit }) {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.8 }}
                   transition={{ duration: 0.5, type: "spring", bounce: 0.4 }}
-                  key={image.id}
+                  key={image._id || image.id || index}
                   className={`group relative rounded-3xl overflow-hidden cursor-pointer border border-white/10 hover:border-[#D4AF37]/50 shadow-lg ${gridClass}`}
                 >
                   <div className="absolute inset-0 bg-[#050A15]/20 group-hover:bg-transparent transition-colors duration-500 z-10" />
@@ -178,6 +160,7 @@ export default function Gallery({ hideHeader = false, limit }) {
             })}
           </AnimatePresence>
         </motion.div>
+        )}
 
         {/* View All Button */}
         {hasMore && (

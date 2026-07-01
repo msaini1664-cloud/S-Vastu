@@ -44,15 +44,15 @@ export default function Navbar() {
 
           {/* Desktop Menu */}
           <nav className="hidden md:flex space-x-8 lg:space-x-10 items-center">
-            {['Home', 'About', 'Services', 'Gallery', 'Blog', 'Contact'].map((item) => {
+            {['Home', 'About', 'Services', 'Gallery', 'Locations', 'Blog', 'Contact'].map((item) => {
               const isRoute = true;
               const routePath = item === 'Home' ? '/' : `/${item.toLowerCase()}`;
               const hashPath = `/#${item.toLowerCase()}`;
-              
+
               if (isRoute) {
                 return (
-                  <Link 
-                    key={item} 
+                  <Link
+                    key={item}
                     to={routePath}
                     className="text-gray-700 hover:text-[#B8860B] font-semibold text-base transition-colors duration-300 relative group"
                   >
@@ -62,8 +62,8 @@ export default function Navbar() {
                 );
               }
               return (
-                <a 
-                  key={item} 
+                <a
+                  key={item}
                   href={hashPath}
                   className="text-gray-700 hover:text-[#B8860B] font-semibold text-base transition-colors duration-300 relative group"
                 >
@@ -95,11 +95,11 @@ export default function Navbar() {
           <p className="text-xs text-gray-500 mb-4 pb-3 border-b text-center px-4">
             Welcome to S Vastu Solution – Trusted Vastu Consultant
           </p>
-          {['Home', 'About', 'Services', 'Gallery', 'Blog', 'Contact'].map((item) => {
+          {['Home', 'About', 'Services', 'Gallery', 'Locations', 'Blog', 'Contact'].map((item) => {
             const isRoute = true;
             const routePath = item === 'Home' ? '/' : `/${item.toLowerCase()}`;
             const hashPath = `/#${item.toLowerCase()}`;
-            
+
             if (isRoute) {
               return (
                 <Link

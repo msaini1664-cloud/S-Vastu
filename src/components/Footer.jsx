@@ -63,7 +63,7 @@ export default function Footer() {
           <div>
             <h4 className="text-lg font-semibold text-white mb-6 uppercase tracking-wide">Quick Links</h4>
             <ul className="space-y-4">
-              {['Home', 'About Us', 'Services', 'Blog'].map((link) => {
+              {['Home', 'About Us', 'Services', 'Locations', 'Blog'].map((link) => {
                 let linkPath = link.toLowerCase().replace(' ', '-');
                 if (link === 'Home') linkPath = '';
                 if (link === 'About Us') linkPath = 'about';
